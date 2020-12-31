@@ -1,9 +1,6 @@
 name: s3-deploy
 
-on:
-  push:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
   build-test-deploy-frontend:
