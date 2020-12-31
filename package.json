@@ -1,0 +1,15 @@
+{
+  "name": "danet-portal",
+  "version": "1.0.0",
+  "description": "Danet Portal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psech/danet-portal.git"
+  },
+  "author": "Przemek Sech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psech/danet-portal/issues"
+  },
+  "homepage": "https://github.com/psech/danet-portal#readme"
+}
