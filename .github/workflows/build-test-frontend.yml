@@ -14,6 +14,20 @@ jobs:
       run:
         working-directory: frontend
     steps:
+      - name: Read .nvmrc
+        run: echo ::set-output name=NODE_VERSION::$(cat ../.nvmrc | cut -c 1-2)
+        id: nvm
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
