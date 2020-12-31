@@ -1,9 +1,13 @@
-name: s3-deploy
+name: Deploy frontend
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - "master"
 
 jobs:
-  build-test-deploy-frontend:
+  deploy-frontend:
+    name: Deploy frontend
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -11,17 +15,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Build
+        run: npm install && npm run build
+      - name: Test
+        run: npm test
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-      - name: Build
-        run: npm install && npm run build
-      - name: Test
-        run: npm test
-      - name: Deploy app build to S3 bucket
+      - name: Deploy
         run: aws s3 sync ./build/ s3://danet-portal --delete
       - name: Invalidate Cloudfront
         uses: chetan/invalidate-cloudfront-action@v1.3
