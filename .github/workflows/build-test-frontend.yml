@@ -2,9 +2,8 @@ name: Build and test
 
 on:
   push:
-    branches:
-      - "**"
-      - "!master"
+    branches-ignore:
+      - master
   pull_request:
 
 jobs:
@@ -34,5 +33,5 @@ jobs:
       - name: Build
         run: npm install && npm run build
       - name: Test
-        run: npm test
+        run: npm test -- --coverage
     # TODO: Deploy to Dev
