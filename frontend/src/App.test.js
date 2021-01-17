@@ -3,6 +3,6 @@ import App from "./App";
 
 it("renders logo", () => {
   render(<App />);
-  const logo = screen.getByTestId("logo");
-  expect(logo).toBeInTheDocument();
+  const navbar = screen.getByTestId("navigation-bar");
+  expect(navbar).toBeInTheDocument();
 });
