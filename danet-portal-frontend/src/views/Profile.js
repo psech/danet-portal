@@ -9,7 +9,6 @@ import config from "../auth_config.json";
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const organizationObj = user[`https://${config.tenant}/organization`];
-  console.log(organizationObj);
   const organization =
     Object.keys(organizationObj).length === 0 &&
     organizationObj.constructor === Object ? (

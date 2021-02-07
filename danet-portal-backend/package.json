@@ -1,0 +1,17 @@
+{
+  "name": "danet-portal-backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "sls offline"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^1.12.2",
+    "util": "^0.12.3"
+  },
+  "devDependencies": {
+    "serverless-offline": "^6.8.0"
+  }
+}

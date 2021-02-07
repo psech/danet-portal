@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "danet-portal-frontend",
   "version": "0.1.0",
   "private": true,
   "jest": {
@@ -7,7 +7,7 @@
       "src/**/*.{js,jsx,ts,tsx}"
     ],
     "coveragePathIgnorePatterns": [
-      "frontend/src/index.js"
+      "danet-portal-frontend/src/index.js"
     ],
     "coverageThreshold": {
       "global": {
@@ -42,7 +42,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=8080 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "deploy": "npm run build && aws s3 sync build/ s3://danet-portal --profile Danet"
