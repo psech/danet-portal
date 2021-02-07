@@ -2,8 +2,28 @@
   "name": "danet-portal-backend",
   "version": "1.0.0",
   "private": true,
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": [],
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    },
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
+  },
   "scripts": {
-    "start": "sls offline"
+    "start": "sls offline",
+    "test": "jest --coverage",
+    "deploy": ""
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -12,6 +32,7 @@
     "util": "^0.12.3"
   },
   "devDependencies": {
+    "jest": "^26.6.3",
     "serverless-offline": "^6.8.0"
   }
 }

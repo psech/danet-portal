@@ -5,6 +5,9 @@ jspm_packages
 # Serverless directories
 .serverless
 
+# testing
+/coverage
+
 # misc
 .DS_Store
 .env
