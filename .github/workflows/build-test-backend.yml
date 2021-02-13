@@ -1,4 +1,4 @@
-name: Build and test
+name: FE Build and test
 
 on:
   push:
