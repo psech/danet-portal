@@ -1,10 +1,11 @@
 const jwksClient = require("jwks-rsa");
 const jwt = require("jsonwebtoken");
 const util = require("util");
+const { getEnv } = require("./env");
 
 const jwtOptions = {
-  audience: process.env.AUDIENCE,
-  issuer: process.env.TOKEN_ISSUER,
+  audience: getEnv("AUDIENCE"),
+  issuer: getEnv("TOKEN_ISSUER"),
 };
 
 const getPolicyDocument = (effect, resource) => {
@@ -55,7 +56,7 @@ module.exports.authenticate = (params) => {
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 10, // Default value
-    jwksUri: process.env.JWKS_URI,
+    jwksUri: getEnv("JWKS_URI"),
   });
 
   const getSigningKey = util.promisify(client.getSigningKey);
