@@ -23,7 +23,7 @@
   "scripts": {
     "start": "sls offline",
     "test": "jest --coverage",
-    "deploy": ""
+    "deploy": "sls deploy"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

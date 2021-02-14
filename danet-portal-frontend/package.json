@@ -42,10 +42,12 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "PORT=8080 react-scripts start",
-    "build": "react-scripts build",
+    "start": "env-cmd -e local react-scripts start",
+    "serve": "serve -s -l 8080 build",
+    "build": "env-cmd -e $ENVIRONMENT react-scripts build",
     "test": "react-scripts test",
-    "deploy": "npm run build && aws s3 sync build/ s3://danet-portal --profile Danet"
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://danet-portal --profile Danet"
   },
   "eslintConfig": {
     "extends": [
@@ -64,5 +66,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "serve": "^11.3.2"
   }
 }
