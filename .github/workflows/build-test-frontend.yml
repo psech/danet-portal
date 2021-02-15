@@ -1,10 +1,14 @@
-name: BE Build and test
+name: FE Build and test
 
 on:
   push:
     branches-ignore:
       - master
+    paths:
+      - "danet-portal-frontend/**"
   pull_request:
+    paths:
+      - "danet-portal-frontend/**"
 
 jobs:
   build-test-frontend:

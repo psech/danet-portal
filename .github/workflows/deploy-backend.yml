@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - "master"
+    paths:
+      - "danet-portal-backend/**"
 
 jobs:
   deploy-backend:

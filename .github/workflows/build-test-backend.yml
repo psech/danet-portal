@@ -1,10 +1,14 @@
-name: FE Build and test
+name: BE Build and test
 
 on:
   push:
     branches-ignore:
       - master
+    paths:
+      - "danet-portal-backend/**"
   pull_request:
+    paths:
+      - "danet-portal-backend/**"
 
 jobs:
   build-test-backend:
@@ -12,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: build-test-backend
+        working-directory: danet-portal-backend
     steps:
       - name: Checkout
         uses: actions/checkout@v2
