@@ -47,7 +47,7 @@
     "build": "env-cmd -e $ENVIRONMENT react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "deploy": "aws s3 sync build/ s3://danet-portal --profile Danet"
+    "deploy": "aws s3 sync build/ s3://danet-portal"
   },
   "eslintConfig": {
     "extends": [

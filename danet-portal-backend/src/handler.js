@@ -1,4 +1,7 @@
-module.exports.external = async (event) => {
+const middy = require("middy");
+const { cors } = require("middy/middlewares");
+
+const slsTest = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify(
@@ -11,3 +14,7 @@ module.exports.external = async (event) => {
     ),
   };
 };
+
+const external = middy(slsTest).use(cors());
+
+module.exports = { external };
