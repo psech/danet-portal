@@ -1,7 +1,6 @@
 service: danet-portal-backend
 
 app: danet-portal-backend
-org: psech
 
 frameworkVersion: "2"
 
