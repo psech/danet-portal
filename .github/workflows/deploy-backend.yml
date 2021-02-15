@@ -1,20 +1,20 @@
-name: FE Deploy
+name: BE Deploy
 
 on:
   push:
     branches:
       - "master"
     paths:
-      - "danet-portal-frontend/**"
+      - "danet-portal-backend/**"
   workflow_dispatch:
 
 jobs:
-  deploy-frontend:
-    name: Deploy frontend
+  deploy-backend:
+    name: Deploy backend
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: danet-portal-frontend
+        working-directory: danet-portal-backend
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -33,9 +33,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Build
-        run: npm install && npm run build
+        run: npm install -g serverless && npm install
       - name: Test
-        run: npm test -- --coverage
+        run: npm test
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -43,10 +43,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Deploy
-        run: aws s3 sync ./build/ s3://danet-portal --delete
-      - name: Invalidate Cloudfront
-        uses: chetan/invalidate-cloudfront-action@v1.3
-        env:
-          DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
-          PATHS: "/ /index.html"
-    # TODO: Deploy to Production
+        run: sls deploy

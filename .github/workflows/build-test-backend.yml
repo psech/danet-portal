@@ -1,23 +1,23 @@
-name: FE Build and test
+name: BE Build and test
 
 on:
   push:
     branches-ignore:
       - master
     paths:
-      - "danet-portal-frontend/**"
+      - "danet-portal-backend/**"
   pull_request:
     paths:
-      - "danet-portal-frontend/**"
+      - "danet-portal-backend/**"
   workflow_dispatch:
 
 jobs:
-  build-test-frontend:
-    name: Build and test frontend
+  build-test-backend:
+    name: Build and test backend
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: danet-portal-frontend
+        working-directory: danet-portal-backend
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -36,7 +36,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Build
-        run: npm install && ENVIRONMENT=dev npm run build
+        run: npm install
       - name: Test
-        run: npm test -- --coverage
-    # TODO: Build Production
+        run: npm test
+    # TODO: Deploy to Dev
