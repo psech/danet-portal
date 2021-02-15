@@ -6,6 +6,7 @@ on:
       - "master"
     paths:
       - "danet-portal-backend/**"
+  workflow_dispatch:
 
 jobs:
   deploy-backend:

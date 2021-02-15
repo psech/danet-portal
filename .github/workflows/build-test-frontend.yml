@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - "danet-portal-frontend/**"
+  workflow_dispatch:
 
 jobs:
   build-test-frontend:
